@@ -58,7 +58,6 @@ img{
   background-color: rgba(255, 255, 255, 0.8);
   min-height: 39vw;
   max-height: 39vw;
-  /*display: inline-block;*/
   display: flex;
   flex-flow: column;
   margin: 0;
@@ -132,8 +131,6 @@ img{
 
 .searchSplit{
   overflow-y: auto;
-  /*min-height: 90%;
-  max-height: 90%;*/
   flex-grow: 1;
 }
 
