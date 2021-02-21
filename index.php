@@ -25,11 +25,11 @@
         </form>
         <form class="coordTitle" id='addBar' method='post'>
             <label for="username_addition">Add Information:</label><br>
-            <input type='text' class="addToDB" id='username_addition' name='username_addition' placeholder="Enter name"></input>
-            <input type='text' class="addToDB" id='spot_addition' name='spot_addition' placeholder="Spot title"></input>
-            <input type='text' class="addToDB" id='detail_addition' name='detail_addition' placeholder="Spot details"></input>
-            <input type='text' class="addToDB" id='lat_addition' name='lat_addition' placeholder="Latitude"></input>
-            <input type='text' class="addToDB" id='lng_addition' name='lng_addition' placeholder="Longitude"></input>
+            <input type='text' class="addToDB" id='username_addition' name='username_addition' placeholder="Enter name"></input><br>
+            <input type='text' class="addToDB" id='spot_addition' name='spot_addition' placeholder="Spot title"></input><br>
+            <input type='text' class="addToDB" id='detail_addition' name='detail_addition' placeholder="Spot details"></input><br>
+            <input type='text' class="addToDB" id='lat_addition' name='lat_addition' placeholder="Latitude"></input><br>
+            <input type='text' class="addToDB" id='lng_addition' name='lng_addition' placeholder="Longitude"></input><br>
             <input type='submit' value='Add' name='add_button'>
         </form>
 
