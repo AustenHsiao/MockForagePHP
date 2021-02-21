@@ -16,9 +16,18 @@
     </nav>
     <div class="container whole">
       <div class="container coord">
+        <button onclick=show_search() class='displayButton'>Search Location(s)</button>
+        <button onclick=show_add() class='displayButton'>Add Location</button>
         <form class="coordTitle" id='searchBar' method='post'>
-            <label for="username">Search by User Name:</label>
+            <label for="username_input">Search by User Name:</label>
             <input type='text' id='username_input' name='username_input' placeholder="Enter name"></input>
+            <input type='submit' value='submit' name='username_button'>
+        </form>
+        <form class="coordTitle" id='addBar' method='post'>
+            <label for="username_addition">Add user name:</label>
+            <input type='text' id='username_addition' name='username_addition' placeholder="Enter name"></input>
+            <label for="username_addition">Add user name:</label>
+            <input type='text' id='username_addition' name='username_addition' placeholder="Enter name"></input>
             <input type='submit' value='submit' name='username_button'>
         </form>
             
@@ -82,6 +91,6 @@
     </div>
     <div class="container weather" id="weatherBox"></div>
 
-        <script>
+    <script src="forage.js"></script>
   </body>
 </html>

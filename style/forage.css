@@ -153,3 +153,8 @@ img{
 #user_identifier{
   display: none;
 }
+
+.displayButton{
+  margin: 0;
+  padding: 0;
+}
