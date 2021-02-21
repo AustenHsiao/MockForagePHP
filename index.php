@@ -25,11 +25,11 @@
         </form>
         <form class="coordTitle" id='addBar' method='post'>
             <label for="username_addition">Add Information:</label><br>
-            <input type='text' class="addToDB" id='username_addition' name='username_addition' placeholder="Enter name"></input><br>
-            <input type='text' class="addToDB" id='spot_addition' name='spot_addition' placeholder="Spot title"></input><br>
-            <input type='text' class="addToDB" id='detail_addition' name='detail_addition' placeholder="Spot details"></input><br>
-            <input type='text' class="addToDB" id='lat_addition' name='lat_addition' placeholder="Latitude"></input><br>
-            <input type='text' class="addToDB" id='lng_addition' name='lng_addition' placeholder="Longitude"></input><br>
+            <input type='text' class="addToDB" id='username_addition' name='username_addition' placeholder="Enter name"></input>
+            <input type='text' class="addToDB" id='spot_addition' name='spot_addition' placeholder="Spot title"></input>
+            <input type='text' class="addToDB" id='detail_addition' name='detail_addition' placeholder="Spot details"></input>
+            <input type='text' class="addToDB" id='lat_addition' name='lat_addition' placeholder="Latitude"></input>
+            <input type='text' class="addToDB" id='lng_addition' name='lng_addition' placeholder="Longitude"></input>
             <input type='submit' value='Add' name='add_button'>
         </form>
 
@@ -39,21 +39,39 @@
                 <?php
                     if(array_key_exists('username_button', $_POST)){
                         lookup_locations();
+                    }else if(array_key_exists('add_button', $_POST)){
+                        add_location();
                     }
 
-                    //Look up the database     
-                    function lookup_locations(){
+                    function connect_to_static_DB(){
                         $db = parse_url(getenv("DATABASE_URL"));
                         $db["path"] = ltrim($db["path"], "/");
                         $connection_string = "host=" . $db["host"] . " dbname=" . $db["path"] . " user=" . $db["user"] . " password=" . $db["pass"];
-                        $connect = pg_connect($connection_string);
+                        return pg_connect($connection_string);
+                    }
+
+                    //add to database
+                    function add_location(){
+                        $connect = connect_to_static_DB()
+
+                        if($connect){
+                            return;
+                        }else{
+                            echo "Not connected";
+                        }
+                    }
+
+
+                    //Look up the database     
+                    function lookup_locations(){
+                        $connect = connect_to_static_DB();
 
                         if($connect){   
                             $fullname = preg_split("/ /", $_POST["username_input"]);
 
                             if(strlen($fullname[0]) == 0){
                                 // empty search
-                                echo "Enter a name to query the database eg.'firstname lastname'";
+                                echo "Enter a name to query the database eg.'firstname lastname' or enter information to add to the database.";
                                 return;
                             }else if(count($fullname) == 1){
                                 // only 1 name (first) OR empty
