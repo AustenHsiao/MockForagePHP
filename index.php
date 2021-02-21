@@ -21,10 +21,6 @@
             <input type='text' id='username_input' name='username_input' placeholder="Enter name"></input>
             <input type='submit' value='submit' name='username_button'>
         </form>
-
-        <!--<h3 class="coordTitle" id="searchBar">Search by User Name</h3>
-        <input id="userNameInput" type="text" name="username_input" >
-        <input type='button' value="Search" name="search_btn">-->
             
         <div class='searchSplit'> 
             <h3 class="coordTitle">Foraging Locations</h3>
@@ -59,7 +55,7 @@
                             }
 
                             while($row = pg_fetch_assoc($result)){
-                                echo "Name: " . $row['name_first'] . " " . $row['name_last'] . "<br>";
+                                //echo "Name: " . $row['name_first'] . " " . $row['name_last'] . "<br>";
                                 echo "Title: " . $row['title'] . "<br>";
                                 echo "Information: " . $row['comment'] . "<br>";
                                 echo "Latitude: " . $row['lat'] . "<br>";
