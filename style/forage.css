@@ -172,6 +172,8 @@ img{
 
 input{
   display: block;
+  min-height: 1vw;
+  max-height: 1vw;
   margin: 0;
   padding: 0;
 }
