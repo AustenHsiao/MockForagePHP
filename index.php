@@ -61,7 +61,7 @@
                         $latitude = $_POST["lat_addition"];
                         $longitude = $_POST["lng_addition"];
                         if($connect){
-                            $id = (pg_query($connect, 'SELECT MAX(id) AS max_id FROM users')).['max_id'] + 1;
+                            $id = (int)pg_fetch_result(pg_query($connect, 'SELECT MAX(id) AS max_id FROM users'), 0, 0) + 1;
                             pg_query_params($connect, 'INSERT INTO users VALUES ($1, $2, $3)', array($id, $first_name, $last_name));
                             pg_query_params($connect, 'INSERT INTO locations VALUES ($1, $2, $3, $4, $5)', array($spot_title, $spot_details, $id, $latitude, $longitude));
                         }else{
