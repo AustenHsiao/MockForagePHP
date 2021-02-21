@@ -16,14 +16,23 @@
     </nav>
     <?php   
         //Look up the database     
-        function lookup_locations(/*$username_input*/){
+        function lookup_locations(){
             $db = parse_url(getenv("DATABASE_URL"));
             $db["path"] = ltrim($db["path"], "/");
             $connection_string = "host=" . $db["host"] . " dbname=" . $db["path"] . " user=" . $db["user"] . " password=" . $db["pass"];
             $connect = pg_connect($connection_string);
 
-            if($connect){
-                echo "Connected";
+            if($connect){   
+                $fullname = preg_split(" ", $_POST["username_input"]);
+                $escape_first = mysql_real_escape_string(trim($fullname[0]));
+                $escape_last = mysql_real_escape_string(trim($fullname[1]));
+                $statement = "SELECT * FROM locations L JOIN users U ON L.user=U.id"/* WHERE U.name_first=$escape_first AND U.name_last=$escape_last"*/;
+                $result = pg_query($connect, $statement);
+                foreach($result as $data){
+                    echo $data;
+                }
+
+                pg_close($connect);
             }else{
                 echo "Not connected";
             }
@@ -31,8 +40,8 @@
     ?>
     <div class="container whole">
       <div class="container coord">
-        <h3 class='coordTitle' id='searchBar'>Search by User Name</h3>
-        <input id='userNameInput' type='text' name='username_input' placeholder='Enter name'> <!-- place php here-->
+        <h3 class="coordTitle" id="searchBar">Search by User Name</h3>
+        <input id="userNameInput" type="text" name="username_input" placeholder="Enter name"> <!-- place php here-->
         <!--<input type='button' value="Search" name="search_btn">-->
         <p>
             <?php
