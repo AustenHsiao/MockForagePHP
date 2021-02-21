@@ -131,7 +131,7 @@ img{
 }
 
 .searchSplit{
-  overflow-y: scroll;
+  overflow-y: auto;
   /*min-height: 90%;
   max-height: 90%;*/
   flex-grow: 1;
