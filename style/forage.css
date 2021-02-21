@@ -114,6 +114,13 @@ img{
 }
 
 #searchBar{
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+#addBar{
+  display: none;
   margin: 0;
   padding: 0;
 }
@@ -156,5 +163,9 @@ img{
 
 .displayButton{
   margin: 0;
-  padding: 0;
+  padding: 2vw;
+}
+
+.displayButton:hover{
+  color:cyan;
 }

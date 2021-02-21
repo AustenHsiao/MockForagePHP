@@ -24,14 +24,16 @@
             <input type='submit' value='submit' name='username_button'>
         </form>
         <form class="coordTitle" id='addBar' method='post'>
-            <label for="username_addition">Add user name:</label>
-            <input type='text' id='username_addition' name='username_addition' placeholder="Enter name"></input>
-            <label for="username_addition">Add user name:</label>
-            <input type='text' id='username_addition' name='username_addition' placeholder="Enter name"></input>
+            <label for="username_addition">Add Information:</label><br>
+            <input type='text' id='username_addition' name='username_addition' placeholder="Enter name"></input><br>
+            <input type='text' id='spot_addition' name='spot_addition' placeholder="Spot title"></input><br>
+            <input type='text' id='detail_addition' name='detail_addition' placeholder="Spot details"></input><br>
+            <input type='text' id='lat_addition' name='lat_addition' placeholder="Latitude"></input><br>
+            <input type='text' id='lng_addition' name='lng_addition' placeholder="Longitude"></input><br>
             <input type='submit' value='submit' name='username_button'>
         </form>
             
-        <div class='searchSplit'> 
+        <div class='searchSplit' id='searchSplit'> 
             <h3 class="coordTitle">Foraging Locations</h3>
             <div class="searchResult">
                 <?php
