@@ -179,8 +179,6 @@ input{
   width: 80%;
 }
 .form-button{
-  min-height: 1vw;
-  max-height: 1vw;
-  min-width: 3vw;
-  max-width: 3vw;
+  width: 10%;
+  height: 2vw;
 }
