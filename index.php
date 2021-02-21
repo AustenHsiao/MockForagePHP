@@ -43,10 +43,7 @@
 
                         if($connect){   
                             $fullname = preg_split("/ /", $_POST["username_input"]);
-                            echo count($fullname);
-                            echo $fullname;
-                            echo $fullname[0];
-                            echo strlen($fullname[0]);
+
                             if(strlen($fullname[0]) == 0){
                                 echo "Enter a name to query the database eg.'firstname lastname'";
                                 return;
@@ -62,13 +59,13 @@
                             }
 
                             while($row = pg_fetch_assoc($result)){
-                                echo $row['name_first'] . "\n";
-                                echo $row['name_last'] . "\n";
-                                echo $row['title'] . "\n";
-                                echo $row['comment'] . "\n";
-                                echo $row['lat'] . "\n";
-                                echo $row['lng'] . "\n";
-                                echo "\n\n";
+                                echo $row['name_first'] . "<br>";
+                                echo $row['name_last'] . "<br>";
+                                echo $row['title'] . "<br>";
+                                echo $row['comment'] . "<br>";
+                                echo $row['lat'] . "<br>";
+                                echo $row['lng'] . "<br>";
+                                echo "<br><br>";
                             }
 
                             pg_close($connect);
