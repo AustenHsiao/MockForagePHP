@@ -21,7 +21,7 @@
         <form class="coordTitle" id='searchBar' method='post'>
             <label for="username_input">Search by User Name:</label>
             <input type='text' id='username_input' name='username_input' placeholder="Enter name"></input>
-            <input type='submit' value='Search' name='username_button'>
+            <input type='submit' value='Search' name='username_button' class='form-button'>
         </form>
         <form class="coordTitle" id='addBar' method='post'>
             <label for="username_addition">Add Information:</label><br>
@@ -30,7 +30,7 @@
             <input type='text' class="addToDB" id='detail_addition' name='detail_addition' placeholder="Spot details"></input>
             <input type='text' class="addToDB" id='lat_addition' name='lat_addition' placeholder="Latitude"></input>
             <input type='text' class="addToDB" id='lng_addition' name='lng_addition' placeholder="Longitude"></input>
-            <input type='submit' value='Add' name='add_button'>
+            <input type='submit' value='Add' class='form-button' name='add_button'>
         </form>
 
         <div class='searchSplit' id='searchSplit'> 

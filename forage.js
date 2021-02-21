@@ -14,6 +14,6 @@ function show_add() {
     let addForm = document.getElementById("addBar");
     searchForm.style.display = "None";
     addForm.style.display = "block";
-    document.getElementById('searchSplit').style.minHeight = "65%";
-    document.getElementById('searchSplit').style.maxHeight = "65%";
+    document.getElementById('searchSplit').style.minHeight = "60%";
+    document.getElementById('searchSplit').style.maxHeight = "60%";
 }
