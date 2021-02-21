@@ -19,7 +19,7 @@
         function lookup_locations($username_input){
             $db = parse_url(getenv("DATABASE_URL"));
             $db["path"] = ltrim($db["path"], "/");
-            $connect = pg_connect($db["path"])
+            $connect = pg_connect($db["path"]);
 
             if($connect){
                 echo "Connected";
