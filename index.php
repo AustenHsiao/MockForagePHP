@@ -46,7 +46,9 @@
                             echo count($fullname);
                             echo $fullname;
                             echo $fullname[0];
-                            if(count($fullname) == 1){
+                            if(strlen($fullname[0]) == 0){
+                                echo "Enter a name to query the database eg.'firstname lastname'";
+                            }else if(count($fullname) == 1){
                                 // only 1 name (first) OR empty
                                 $escape_first = pg_escape_string(trim($fullname[0]));
                                 $statement = "SELECT name_first, name_list, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first";
