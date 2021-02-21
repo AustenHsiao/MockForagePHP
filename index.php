@@ -16,14 +16,24 @@
     </nav>
     <div class="container whole">
       <div class="container coord">
-        <h3 class="coordTitle" id="searchBar">Search by User Name</h3>
-        <input id="userNameInput" type="text" name="username_input" placeholder="Enter name">
-        <input type='button' value="Search" name="search_btn">
+        <form class="coordTitle" id='searchBar' method='post'>
+            <label for="username">Search by User Name:</label>
+            <input type='text' id='username_input' name='username_input' placeholder="Enter name"></input>
+            <input type='submit' value='submit' name='username_button'>
+        </form>
+
+        <!--<h3 class="coordTitle" id="searchBar">Search by User Name</h3>
+        <input id="userNameInput" type="text" name="username_input" >
+        <input type='button' value="Search" name="search_btn">-->
             
         <div class='searchSplit'> 
             <h3 class="coordTitle">Foraging Locations</h3>
             <div class="searchResult">
                 <?php
+                    if(array_key_exists('username_button', $_POST)){
+                        lookup_locations();
+                    }
+
                     //Look up the database     
                     function lookup_locations(){
                         $db = parse_url(getenv("DATABASE_URL"));
@@ -51,10 +61,6 @@
                         }else{
                             echo "Not connected";
                         }
-                    }
-
-                    if(array_key_exists('search_btn', $_POST)){
-                        lookup_locations();
                     }
                 ?>
             </div>
