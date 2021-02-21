@@ -44,11 +44,9 @@
                         if($connect){   
                             $fullname = preg_split("/ /", $_POST["username_input"]);
                             echo count($fullname);
-                            if(count($fullname) == 0){
-                                echo "Enter a name to query the database eg.(firstname lastname)";
-                                exit();
-                            }else if(count($fullname) == 1){
-                                // only 1 name (first)
+                            echo $fullname;
+                            if(count($fullname) == 1){
+                                // only 1 name (first) OR empty
                                 $escape_first = pg_escape_string(trim($fullname[0]));
                                 $statement = "SELECT name_first, name_list, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first";
                             }else{
