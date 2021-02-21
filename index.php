@@ -15,17 +15,13 @@
         <a href="/" name="nav3" id="nav3">About</a>
     </nav>
     <?php   
-        if($_GET){
-            if(isset($_GET['search_btn'])){
-                lookup_locations();
-            }
-        }
-
         //Look up the database     
         function lookup_locations($username_input){
             $db = parse_url(getenv("DATABASE_URL"));
             $db["path"] = ltrim($db["path"], "/");
-            if($db){
+            $connect = pg_connect($db["path"])
+
+            if($connect){
                 echo "Connected";
             }else{
                 echo "Not connected";
@@ -36,7 +32,12 @@
       <div class="container coord">
         <h3 class='coordTitle' id='searchBar'>Search by User Name</h3>
         <input id='userNameInput' type='text' name='username_input' placeholder='Enter name'> <!-- place php here-->
-        <input type='button' value="Search" name="search_btn">
+        <!--<input type='button' value="Search" name="search_btn">-->
+        <p>
+            <?php
+                lookup_locations($_POST["username_input"]);
+            ?>
+        </p>
         <div class='searchSplit'> 
             <h3 class="coordTitle">Foraging Locations</h3>
             <div class="searchResult"></div>
