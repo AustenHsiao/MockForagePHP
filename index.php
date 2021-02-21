@@ -42,9 +42,9 @@
                         $connect = pg_connect($connection_string);
 
                         if($connect){   
-                            $fullname = preg_split(" ", $_POST["username_input"]);
+                            $fullname = preg_split("[[:space:]]", $_POST["username_input"]);
 
-                            if(count($fullname) == 0){
+                            if(!$fullname){
                                 echo "Enter a name to query the database eg.(firstname lastname)";
                                 exit();
                             }else if(count($fullname) == 1){
