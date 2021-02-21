@@ -43,9 +43,21 @@
 
                         if($connect){   
                             $fullname = preg_split(" ", $_POST["username_input"]);
-                            $escape_first = mysql_real_escape_string(trim($fullname[0]));
-                            $escape_last = mysql_real_escape_string(trim($fullname[1]));
-                            $statement = "SELECT name_first, name_list, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first AND U.name_last=$escape_last";
+
+                            if(count($fullname) == 0){
+                                echo "Enter a name to query the database eg.(firstname lastname)";
+                                exit();
+                            }else if(count($fullname) == 1){
+                                // only 1 name (first)
+                                $escape_first = mysql_real_escape_string(trim($fullname[0]));
+                                $statement = "SELECT name_first, name_list, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first";
+                            }else{
+                                // 2 names or more-- only the first two words count
+                                $escape_first = mysql_real_escape_string(trim($fullname[0]));
+                                $escape_last = mysql_real_escape_string(trim($fullname[1]));
+                                $statement = "SELECT name_first, name_list, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first AND U.name_last=$escape_last";
+                            }
+
                             $result = pg_query($connect, $statement);
                             while($row = pg_fetch_assoc($result)){
                                 echo $row['name_first'] . "\n";
