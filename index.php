@@ -54,12 +54,12 @@
                     //add to database
                     function add_location(){
                         $connect = connect_to_static_DB();
-                        $first_name = $_PUT["firstname_addition"];
-                        $last_name = $_PUT["lastname_addition"];
-                        $spot_title = $_PUT["spot_addition"];
-                        $spot_details = $_PUT["detail_addition"];
-                        $latitude = $_PUT["lat_addition"];
-                        $longitude = $_PUT["lng_addition"];
+                        $first_name = $_POST["firstname_addition"];
+                        $last_name = $_POST["lastname_addition"];
+                        $spot_title = $_POST["spot_addition"];
+                        $spot_details = $_POST["detail_addition"];
+                        $latitude = $_POST["lat_addition"];
+                        $longitude = $_POST["lng_addition"];
                         if($connect){
                             $id = (pg_query($connect, 'SELECT MAX(id) AS max_id FROM users')).['max_id'] + 1;
                             pg_query_params($connect, 'INSERT INTO users VALUES ($1, $2, $3)', array($id, $first_name, $last_name));
