@@ -41,6 +41,7 @@
                             $fullname = preg_split("/ /", $_POST["username_input"]);
 
                             if(strlen($fullname[0]) == 0){
+                                // empty search
                                 echo "Enter a name to query the database eg.'firstname lastname'";
                                 return;
                             }else if(count($fullname) == 1){
@@ -55,7 +56,7 @@
                             }
 
                             while($row = pg_fetch_assoc($result)){
-                                //echo "Name: " . $row['name_first'] . " " . $row['name_last'] . "<br>";
+                                echo "Name: " . $row['name_first'] . " " . $row['name_last'] . "<br>";
                                 echo "Title: " . $row['title'] . "<br>";
                                 echo "Information: " . $row['comment'] . "<br>";
                                 echo "Latitude: " . $row['lat'] . "<br>";
