@@ -52,7 +52,7 @@
 
                     //add to database
                     function add_location(){
-                        $connect = connect_to_static_DB()
+                        $connect = connect_to_static_DB();
 
                         if($connect){
                             return;
