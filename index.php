@@ -61,9 +61,22 @@
                         $latitude = $_POST["lat_addition"];
                         $longitude = $_POST["lng_addition"];
                         if($connect){
-                            $id = (int)pg_fetch_result(pg_query($connect, 'SELECT MAX(id) AS max_id FROM users'), 0, 0) + 1;
-                            pg_query_params($connect, 'INSERT INTO users VALUES ($1, $2, $3)', array($id, $first_name, $last_name));
+                            // check to see the name already exists. Case sensitive. We're basically using the firstname/lastname as a key, which isn't good, but
+                            // this is just a mock up to use php
+                            $exist = pg_query_params($connect, 'SELECT U.id FROM users U VALUES WHERE U.name_first=$1 AND U.name_last=$2', array($first_name, $last_name));
+                            if(count($exist.rows) != 0){
+                                $id = pg_fetch_result($exist, 0, 0);
+                            }else{
+                                $id = (int)pg_fetch_result(pg_query($connect, 'SELECT MAX(id) AS max_id FROM users'), 0, 0) + 1;
+                                pg_query_params($connect, 'INSERT INTO users VALUES ($1, $2, $3)', array($id, $first_name, $last_name));
+                            }
                             pg_query_params($connect, 'INSERT INTO locations VALUES ($1, $2, $3, $4, $5)', array($spot_title, $spot_details, $id, $latitude, $longitude));
+                            echo "Name: " . $first_name . " " . $last_name . "<br>";
+                            echo "Title: " . $spot_title . "<br>";
+                            echo "Information: " . $spot_details . "<br>";
+                            echo "Latitude: " . $latitude . "<br>";
+                            echo "Longitude: " . $longitude . "<br>";
+                            echo "<br><br>";
                         }else{
                             echo "Not connected";
                         }
