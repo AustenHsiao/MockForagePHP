@@ -169,3 +169,8 @@ img{
 .displayButton:hover{
   color:cyan;
 }
+
+.addToDB{
+  margin: 0;
+  padding: 0;
+}
