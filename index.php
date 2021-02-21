@@ -28,7 +28,7 @@
                 $escape_last = mysql_real_escape_string(trim($fullname[1]));*/
                 $statement = "SELECT * FROM locations L JOIN users U ON L.user=U.id"/* WHERE U.name_first=$escape_first AND U.name_last=$escape_last"*/;
                 $result = pg_query($connect, $statement);
-                while($row = mysql_fetch_assoc($result)){
+                while($row = pg_fetch_assoc($result)){
                     echo $row['name_first'] . "\n";
                     echo $row['name_last'] . "\n";
                     echo $row['title'] . "\n";
