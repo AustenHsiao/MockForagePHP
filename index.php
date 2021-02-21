@@ -18,7 +18,9 @@
         //Look up the database     
         function lookup_locations($username_input){
             $db = parse_url(getenv("DATABASE_URL"));
+            echo "DB" . $db;
             $db["path"] = ltrim($db["path"], "/");
+            echo "DB" . $db["path"];
             $connect = pg_connect($db["path"]);
 
             if($connect){
@@ -35,7 +37,7 @@
         <!--<input type='button' value="Search" name="search_btn">-->
         <p>
             <?php
-                lookup_locations($_POST["username_input"]);
+                lookup_locations($_POST['username_input']);
             ?>
         </p>
         <div class='searchSplit'> 
