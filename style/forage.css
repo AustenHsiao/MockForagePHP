@@ -175,8 +175,9 @@ input{
   min-height: 1.5vw;
   max-height: 1.5vw;
   margin: 0.2vw;
-  padding: 0;
+  padding: 0.2vw;
 }
 .form-button{
-  padding: 0.5vw;
+  min-height: 0.5vw;
+  max-height: 0.5vw;
 }
