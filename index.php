@@ -45,6 +45,7 @@
                             $fullname = preg_split("/ /", $_POST["username_input"]);
                             echo count($fullname);
                             echo $fullname;
+                            echo $fullname[0];
                             if(count($fullname) == 1){
                                 // only 1 name (first) OR empty
                                 $escape_first = pg_escape_string(trim($fullname[0]));
