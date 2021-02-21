@@ -16,10 +16,10 @@
     </nav>
     <?php   
         //Look up the database     
-        function lookup_locations($username_input){
+        function lookup_locations(/*$username_input*/){
             $db = parse_url(getenv("DATABASE_URL"));
             $db["path"] = ltrim($db["path"], "/");
-            $connection_string = "host=" . $db["host"] . " dbname=" . $db["path"] . " user=" . db["user"] . " password=" . $db["pass"];
+            $connection_string = "host=" . $db["host"] . " dbname=" . $db["path"] . " user=" . $db["user"] . " password=" . $db["pass"];
             $connect = pg_connect($connection_string);
 
             if($connect){
@@ -36,7 +36,7 @@
         <!--<input type='button' value="Search" name="search_btn">-->
         <p>
             <?php
-                lookup_locations($_POST['username_input']);
+                lookup_locations(/*$_POST['username_input']*/);
             ?>
         </p>
         <div class='searchSplit'> 
