@@ -49,12 +49,12 @@
                                 exit();
                             }else if(count($fullname) == 1){
                                 // only 1 name (first)
-                                $escape_first = mysql_real_escape_string(trim($fullname[0]));
+                                $escape_first = pg_escape_string(trim($fullname[0]));
                                 $statement = "SELECT name_first, name_list, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first";
                             }else{
                                 // 2 names or more-- only the first two words count
-                                $escape_first = mysql_real_escape_string(trim($fullname[0]));
-                                $escape_last = mysql_real_escape_string(trim($fullname[1]));
+                                $escape_first = pg_escape_string(trim($fullname[0]));
+                                $escape_last = pg_escape_string(trim($fullname[1]));
                                 $statement = "SELECT name_first, name_list, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first AND U.name_last=$escape_last";
                             }
 
