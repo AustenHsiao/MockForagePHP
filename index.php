@@ -63,7 +63,7 @@
                         if($connect){
                             // check to see the name already exists. Case sensitive. We're basically using the firstname/lastname as a key, which isn't good, but
                             // this is just a mock up to use php
-                            $exist = pg_query_params($connect, 'SELECT U.id FROM users U VALUES WHERE U.name_first=$1 AND U.name_last=$2', array($first_name, $last_name));
+                            $exist = pg_query_params($connect, 'SELECT U.id FROM users U WHERE U.name_first=$1 AND U.name_last=$2', array($first_name, $last_name));
                             if(count($exist.rows) != 0){
                                 $id = pg_fetch_result($exist, 0, 0);
                             }else{
