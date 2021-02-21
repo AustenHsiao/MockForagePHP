@@ -25,9 +25,10 @@
         </form>
         <form class="coordTitle" id='addBar' method='post'>
             <label for="username_addition">Add Information:</label><br>
-            <input type='text' class="addToDB" id='username_addition' name='username_addition' placeholder="Enter name" required></input>
-            <input type='text' class="addToDB" id='spot_addition' name='spot_addition' placeholder="Spot title"></input>
-            <input type='text' class="addToDB" id='detail_addition' name='detail_addition' placeholder="Spot details"></input>
+            <input type='text' class="addToDB" id='firstname_addition' name='firstname_addition' placeholder="Enter first name" maxlength="25" required></input>
+            <input type='text' class="addToDB" id='lastname_addition' name='lastname_addition' placeholder="Enter last name" maxlength="25" required></input>
+            <input type='text' class="addToDB" id='spot_addition' name='spot_addition' placeholder="Spot title" maxlength="50"></input>
+            <input type='text' class="addToDB" id='detail_addition' name='detail_addition' placeholder="Spot details" maxlength="200"></input>
             <input type='number' class="addToDB" id='lat_addition' name='lat_addition' placeholder="Latitude" min="-90" max="90" step="0.000001" required></input>
             <input type='number' class="addToDB" id='lng_addition' name='lng_addition' placeholder="Longitude" min="-180" max="180" step="0.000001" required></input>
             <input type='submit' value='Add' class='form-button' name='add_button'>
