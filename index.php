@@ -43,7 +43,7 @@
 
                         if($connect){   
                             $fullname = preg_split("/ /", $_POST["username_input"]);
-                            echo $fullname;
+                            echo count($fullname);
                             if(count($fullname) == 0){
                                 echo "Enter a name to query the database eg.(firstname lastname)";
                                 exit();
