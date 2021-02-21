@@ -46,6 +46,7 @@
                             echo count($fullname);
                             echo $fullname;
                             echo $fullname[0];
+                            echo strlen($fullname[0]);
                             if(strlen($fullname[0]) == 0){
                                 echo "Enter a name to query the database eg.'firstname lastname'";
                                 exit();
@@ -60,7 +61,6 @@
                                 $result = pg_query_params($connect, 'SELECT * FROM users U JOIN Locations L ON U.id=L.user WHERE U.name_first=$1 AND U.name_last=$2', array($escape_first, $escape_last));
                             }
 
-                            $result = pg_query($connect, $statement);
                             while($row = pg_fetch_assoc($result)){
                                 echo $row['name_first'] . "\n";
                                 echo $row['name_last'] . "\n";
