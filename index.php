@@ -109,7 +109,7 @@
         </div>
       </div>
     </div>
-    <div class="container weather" id="weatherBox"></div>
+    <!--<div class="container weather" id="weatherBox"></div>-->
 
     <script src="forage.js"></script>
   </body>

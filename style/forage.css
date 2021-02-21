@@ -87,6 +87,7 @@ img{
   min-width: 100%;
   margin-top: 1vw;
   justify-content: center;
+  min-height: 100%;
   margin-bottom: 1vw;
 }
 
@@ -102,17 +103,6 @@ img{
 .coordTitle {
   font-size: 1.3vw;
   font-weight: bold;
-}
-
-.welcome {
-  display: none;
-  z-index: 3;
-  position: fixed;
-  padding-top: 15vw;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
 }
 
 #searchBar{
