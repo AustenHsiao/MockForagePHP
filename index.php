@@ -14,17 +14,29 @@
         <a href="/" name="nav2" id ="nav2">Add Spot</a>
         <a href="/" name="nav3" id="nav3">About</a>
     </nav>
-    <?php   //Look up the database     
+    <?php   
+        if($_GET){
+            if(isset($_GET['search_btn'])){
+                lookup_locations();
+            }
+        }
+
+        //Look up the database     
         function lookup_locations($username_input){
             $db = parse_url(getenv("DATABASE_URL"));
             $db["path"] = ltrim($db["path"], "/");
-
+            if($db){
+                echo "Connected";
+            }else{
+                echo "Not connected";
+            }
         }
     ?>
     <div class="container whole">
       <div class="container coord">
         <h3 class='coordTitle' id='searchBar'>Search by User Name</h3>
         <input id='userNameInput' type='text' name='username_input' placeholder='Enter name'> <!-- place php here-->
+        <input type='button' value="Search" name="search_btn">
         <div class='searchSplit'> 
             <h3 class="coordTitle">Foraging Locations</h3>
             <div class="searchResult"></div>
@@ -38,5 +50,7 @@
       </div>
     </div>
     <div class="container weather" id="weatherBox"></div>
+
+        <script>
   </body>
 </html>
