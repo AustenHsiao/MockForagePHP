@@ -25,11 +25,11 @@
         </form>
         <form class="coordTitle" id='addBar' method='post'>
             <label for="username_addition">Add Information:</label><br>
-            <input type='text' class="addToDB" id='username_addition' name='username_addition' placeholder="Enter name"></input>
+            <input type='text' class="addToDB" id='username_addition' name='username_addition' placeholder="Enter name" require></input>
             <input type='text' class="addToDB" id='spot_addition' name='spot_addition' placeholder="Spot title"></input>
             <input type='text' class="addToDB" id='detail_addition' name='detail_addition' placeholder="Spot details"></input>
-            <input type='text' class="addToDB" id='lat_addition' name='lat_addition' placeholder="Latitude"></input>
-            <input type='text' class="addToDB" id='lng_addition' name='lng_addition' placeholder="Longitude"></input>
+            <input type='text' class="addToDB" id='lat_addition' name='lat_addition' placeholder="Latitude" require></input>
+            <input type='text' class="addToDB" id='lng_addition' name='lng_addition' placeholder="Longitude" require></input>
             <input type='submit' value='Add' class='form-button' name='add_button'>
         </form>
 
@@ -55,7 +55,10 @@
                         $connect = connect_to_static_DB();
 
                         if($connect){
-                            return;
+                            
+
+
+
                         }else{
                             echo "Not connected";
                         }

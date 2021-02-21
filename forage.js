@@ -5,8 +5,6 @@ function show_search() {
     let addForm = document.getElementById("addBar");
     searchForm.style.display = "block";
     addForm.style.display = "None";
-    //document.getElementById('searchSplit').style.minHeight = "90%";
-    //document.getElementById('searchSplit').style.maxHeight = "90%";
 }
 
 function show_add() {
@@ -14,6 +12,4 @@ function show_add() {
     let addForm = document.getElementById("addBar");
     searchForm.style.display = "None";
     addForm.style.display = "block";
-    //document.getElementById('searchSplit').style.minHeight = "60%";
-    //document.getElementById('searchSplit').style.maxHeight = "60%";
 }
