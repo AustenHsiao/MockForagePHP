@@ -52,12 +52,12 @@
                             }else if(count($fullname) == 1){
                                 // only 1 name (first) OR empty
                                 $escape_first = pg_escape_string(trim($fullname[0]));
-                                $statement = "SELECT name_first, name_last, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first";
+                                $result = pg_query_params($connect, 'SELECT * FROM users U JOIN Locations L ON U.id=L.user WHERE U.name_first=$1', array($escape_first))
                             }else{
                                 // 2 names or more-- only the first two words count
                                 $escape_first = pg_escape_string(trim($fullname[0]));
                                 $escape_last = pg_escape_string(trim($fullname[1]));
-                                $statement = "SELECT name_first, name_last, title, comment, lat, lng FROM locations L JOIN users U ON L.user=U.id WHERE U.name_first=$escape_first AND U.name_last=$escape_last";
+                                $result = pg_query_params($connect, 'SELECT * FROM users U JOIN Locations L ON U.id=L.user WHERE U.name_first=$1 AND U.name_last=$2', array($escape_first, $escape_last))
                             }
 
                             $result = pg_query($connect, $statement);
