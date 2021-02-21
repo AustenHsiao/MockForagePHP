@@ -20,7 +20,8 @@
         <button onclick=show_add() class='displayButton'>Add Location</button>
         <form class="coordTitle" id='searchBar' method='post'>
             <label for="username_input">Search by User Name:</label>
-            <input type='text' id='username_input' name='username_input' placeholder="Enter name"></input>
+            <input type='text' id='firstname_input' name='firstname_input' placeholder="Enter first name" maxlength="25" required></input>
+            <input type='text' id='lastname_input' name='lastname_input' placeholder="Enter last name" maxlength="25"></input>
             <input type='submit' value='Search' name='username_button' class='form-button'>
         </form>
         <form class="coordTitle" id='addBar' method='post'>
@@ -71,12 +72,15 @@
                                 pg_query_params($connect, 'INSERT INTO users VALUES ($1, $2, $3)', array($id, $first_name, $last_name));
                             }
                             pg_query_params($connect, 'INSERT INTO locations VALUES ($1, $2, $3, $4, $5)', array($spot_title, $spot_details, $id, $latitude, $longitude));
+                        
                             echo "Name: " . $first_name . " " . $last_name . "<br>";
                             echo "Title: " . $spot_title . "<br>";
                             echo "Information: " . $spot_details . "<br>";
                             echo "Latitude: " . $latitude . "<br>";
                             echo "Longitude: " . $longitude . "<br>";
-                            echo "<br><br>";
+                            echo "ADDED TO DATABASE";
+
+                            pg_close($connect);
                         }else{
                             echo "Not connected";
                         }
@@ -87,21 +91,13 @@
                         $connect = connect_to_static_DB();
 
                         if($connect){   
-                            $fullname = preg_split("/ /", $_POST["username_input"]);
-
-                            if(strlen($fullname[0]) == 0){
-                                // empty search
-                                echo "Enter a name to query the database eg.'firstname lastname' or enter information to add to the database.";
-                                return;
-                            }else if(count($fullname) == 1){
-                                // only 1 name (first) OR empty
-                                $escape_first = pg_escape_string(trim($fullname[0]));
-                                $result = pg_query_params($connect, 'SELECT * FROM users U JOIN Locations L ON U.id=L.user WHERE U.name_first=$1', array($escape_first));
+                            $firstname = $_POST["firstname_input"];
+                            $lastname = $_POST["lastname_input"];
+                            if(strlen($lastname) == 0){
+                                // only firstname
+                                $result = pg_query_params($connect, 'SELECT * FROM users U JOIN Locations L ON U.id=L.user WHERE U.name_first=$1', array($firstname));
                             }else{
-                                // 2 names or more-- only the first two words count
-                                $escape_first = pg_escape_string(trim($fullname[0]));
-                                $escape_last = pg_escape_string(trim($fullname[1]));
-                                $result = pg_query_params($connect, 'SELECT * FROM users U JOIN Locations L ON U.id=L.user WHERE U.name_first=$1 AND U.name_last=$2', array($escape_first, $escape_last));
+                                $result = pg_query_params($connect, 'SELECT * FROM users U JOIN Locations L ON U.id=L.user WHERE U.name_first=$1 AND U.name_last=$2', array($firstname, $lastname));
                             }
 
                             while($row = pg_fetch_assoc($result)){
