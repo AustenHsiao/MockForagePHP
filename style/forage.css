@@ -58,7 +58,9 @@ img{
   background-color: rgba(255, 255, 255, 0.8);
   min-height: 39vw;
   max-height: 39vw;
-  display: inline-block;
+  /*display: inline-block;*/
+  display: flex;
+  flex-flow: column;
   margin: 0;
   padding: 1vw;
   color: Black;
@@ -140,8 +142,9 @@ img{
 
 .searchSplit{
   overflow-y: scroll;
-  min-height: 90%;
-  max-height: 90%;
+  /*min-height: 90%;
+  max-height: 90%;*/
+  flex-grow: 1;
 }
 
 .resultEntry{
@@ -178,7 +181,8 @@ input{
   padding: 0.2vw;
   width: 80%;
 }
+
 .form-button{
-  width: 10%;
+  width: 20%;
   height: 2vw;
 }
