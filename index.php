@@ -18,10 +18,9 @@
         //Look up the database     
         function lookup_locations($username_input){
             $db = parse_url(getenv("DATABASE_URL"));
-            echo "DB" . $db;
             $db["path"] = ltrim($db["path"], "/");
-            echo "DB" . $db["path"];
-            $connect = pg_connect($db["path"]);
+            $connection_string = "host=" . $db["host"] . " dbname=" . $db["path"] . " user=" . db["user"] . " password=" . $db["pass"];
+            $connect = pg_connect($connection_string);
 
             if($connect){
                 echo "Connected";
