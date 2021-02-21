@@ -59,12 +59,11 @@
                             }
 
                             while($row = pg_fetch_assoc($result)){
-                                echo $row['name_first'] . "<br>";
-                                echo $row['name_last'] . "<br>";
-                                echo $row['title'] . "<br>";
-                                echo $row['comment'] . "<br>";
-                                echo $row['lat'] . "<br>";
-                                echo $row['lng'] . "<br>";
+                                echo "Name: " . $row['name_first'] . " " . $row['name_last'] . "<br>";
+                                echo "Title: " . $row['title'] . "<br>";
+                                echo "Information: " . $row['comment'] . "<br>";
+                                echo "Latitude: " . $row['lat'] . "<br>";
+                                echo "Longitude: " . $row['lng'] . "<br>";
                                 echo "<br><br>";
                             }
 
